@@ -50,6 +50,10 @@ class Jugador{
 			this->pais=pais;
 		}
 		
+		void print(){
+			cout<<nombre<<", "<<dorsal<<endl;
+		}
+		
 		~Jugador(){}
 };
 

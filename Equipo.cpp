@@ -49,6 +49,10 @@ class Equipo{
 			jugadores.erase(jugadores.begin() + pos); 
 		}
 		
+		void print(){
+			cout<<nombre;
+		}
+		
 		~Equipo(){}
 };
 

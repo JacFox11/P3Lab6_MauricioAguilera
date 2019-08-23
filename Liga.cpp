@@ -52,7 +52,7 @@ class Liga{
 		}
 		
 		void print(){
-			cout<<nombre;
+			cout<<nombre<<endl;
 		}
 		
 		~Liga(){}

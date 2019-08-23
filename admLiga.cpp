@@ -22,7 +22,7 @@ class admLiga{
 		    }
             
              vector<Liga*> getLigas(){
-                  return this->ligas;
+                  return ligas;
              } 
 
 			void remLiga(int p){

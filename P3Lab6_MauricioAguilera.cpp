@@ -2,6 +2,10 @@
 
 admLiga al("./ligas.txt");
 
+void Adminliga();
+void Adminequipo(int);
+void Adminjugador(int, int);
+
 int main(){
 	char op='0';
 	while (op!='8'){
@@ -19,15 +23,15 @@ int main(){
 		cin>>op;
 		switch (op){
 			case '1':{
-				
+				Adminliga();
 				break;
 			}
 			case '2':{
-				
+				Adminequipo(0);
 				break;
 			}
 			case '3':{
-				
+				Adminjugador(0, 0);
 				break;
 			}
 			case '4':{
@@ -67,5 +71,163 @@ int main(){
 		}
 	}
 	
+}
+
+void Adminliga(){
+	char op='0';
+	while (op!='3'){
+		system("cls");
+		cout<<"ADMINISTAR LIGAS"<<endl;
+		cout<<"1. Agregar liga"<<endl<<
+		"2. Eliminar liga"<<endl<<
+		"3. Regresar"<<endl<<
+		"Ingrese una opcion: ";
+		cin>>op;
+		switch (op){
+			case '1':{
+				system("cls");
+				string nombre, pais;
+				cout<<"Nombre: ";
+				cin>>nombre;
+				cout<<"Pais: ";
+				cin>>pais;
+				al.addLiga(new Liga(nombre, pais));
+				cout<<"Liga agregada"<<endl;
+				system("pause");
+				break;
+			}
+			case '2':{
+				system("cls");
+				for (int i=0; i<al.getN(); i++){
+					cout<<i<<". "<<al.getLigas().at(i)<<endl;
+				}
+				int pos;
+				cout<<"Ingrese una posicion: ";
+				cin>>pos;
+				al.remLiga(pos);
+				system("cls");
+				cout<<"Liga eliminado"<<endl;
+				system("pause");
+				break;
+			}
+			case '3':{
+				
+				break;
+			}
+			default:{
+				system("cls");
+				cout<<"Esta opcion no es valida, intentelo de nuevo"<<endl;
+				system("pause");
+				break;
+			}
+		}
+	}
+	
+}
+
+void Adminequipo(int pos){
+	char op='0';
+	while (op!='3'){
+		system("cls");
+		cout<<"ADMINISTAR EQUIPOS"<<endl;
+		cout<<"1. Agregar equipo"<<endl<<
+		"2. Eliminar equipo"<<endl<<
+		"3. Regresar"<<endl<<
+		"Ingrese una opcion: ";
+		cin>>op;
+		switch (op){
+			case '1':{
+				system("cls");
+				string nombre, fundacion;
+				cout<<"Nombre: ";
+				cin>>nombre;
+				cout<<"Fundacion: ";
+				cin>>fundacion;
+				al.getLigas().at(pos)->setEquipo(new Equipo(nombre, fundacion));
+				cout<<"Equipo agregada"<<endl;
+				system("pause");
+				break;
+			}
+			case '2':{
+				system("cls");
+				for (int i=0; i<al.getLigas().at(pos)->getEquipos().size(); i++){
+					cout<<i<<". "<<al.getLigas().at(pos)->getEquipos().at(i)->getNombre()<<endl;
+				}
+				int pos2;
+				cout<<"Ingrese una posicion: ";
+				cin>>pos;
+				al.getLigas().at(pos)->remEquipo(pos2);
+				system("cls");
+				cout<<"Equipo eliminado"<<endl;
+				system("pause");
+				break;
+			}
+			case '3':{
+				
+				break;
+			}
+			default:{
+				system("cls");
+				cout<<"Esta opcion no es valida, intentelo de nuevo"<<endl;
+				system("pause");
+				break;
+			}
+		}
+	}
+}
+
+void Adminjugador(int pos, int pos2){
+	char op='0';
+	while (op!='3'){
+		system("cls");
+		cout<<"ADMINISTAR JUGADORES"<<endl;
+		cout<<"1. Agregar jugador"<<endl<<
+		"2. Eliminar jugador"<<endl<<
+		"3. Regresar"<<endl<<
+		"Ingrese una opcion: ";
+		cin>>op;
+		switch (op){
+			case '1':{
+				system("cls");
+				string nombre, pais;
+				int dorsal;
+				cout<<"Nombre: ";
+				cin>>nombre;
+				cout<<"Dorsal: ";
+				cin>>dorsal;
+				cout<<"Pais: ";
+				cin>>pais;
+				al.getLigas().at(pos)->getEquipos().at(pos2)->setJugador(new Jugador(nombre, dorsal, pais));
+				cout<<"Jugador agregada"<<endl;
+				system("pause");
+				break;
+			}
+			case '2':{
+				system("cls");
+				for (int i=0; i<al.getLigas().at(pos)->getEquipos().at(pos2)->getJugadores().size(); i++){
+					cout<<i<<". ";
+					al.getLigas().at(pos)->getEquipos().at(pos2)->getJugadores().at(i)->print();
+				}
+				int pos3;
+				cout<<"Ingrese una posicion: ";
+				cin>>pos;
+				al.getLigas().at(pos)->getEquipos().at(pos2)->remJugador(pos3);
+				system("cls");
+				cout<<"Liga eliminado"<<endl;
+				system("pause");
+				break;
+			}
+			case '3':{
+				
+				break;
+			}
+			default:{
+				system("cls");
+				cout<<"Esta opcion no es valida, intentelo de nuevo"<<endl;
+				system("pause");
+				break;
+			}
+		}
+	}
 }
 
