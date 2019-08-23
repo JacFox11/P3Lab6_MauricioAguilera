@@ -27,11 +27,47 @@ int main(){
 				break;
 			}
 			case '2':{
-				Adminequipo(0);
+				system("cls");
+				if (al.getN()>0){
+					for (int i=0; i<al.getN(); i++){
+						cout<<i<<". "<<al.getLigas().at(i)->getNombre()<<endl;
+					}
+					int pos;
+					cout<<"Ingrese una posicion: ";
+					cin>>pos;
+					Adminequipo(pos);
+				}else{
+					cout<<"No se puede crear equipos sin ligas existentes"<<endl;
+					system("pause");
+				}
 				break;
 			}
 			case '3':{
-				Adminjugador(0, 0);
+				system("cls");
+				if (al.getN()>0){
+					for (int i=0; i<al.getN(); i++){
+						cout<<i<<". "<<al.getLigas().at(i)->getNombre()<<endl;
+					}
+					int pos;
+					cout<<"Ingrese una posicion: ";
+					cin>>pos;
+					if (al.getLigas().at(pos)->getEquipos().size()>0){
+						system("cls");
+						for (int i=0; i<al.getLigas().at(pos)->getEquipos().size(); i++){
+							cout<<i<<". "<<al.getLigas().at(pos)->getEquipos().at(i)->getNombre()<<endl;
+						}
+						int pos2;
+						cout<<"Ingrese una posicion: ";
+						cin>>pos;
+						Adminjugador(pos, pos2);
+					}else{
+						cout<<"No se puede crear jugadores sin equipos existentes en esta liga"<<endl;
+						system("pause");
+					}
+				}else{
+					cout<<"No se puede crear equipos sin ligas existentes"<<endl;
+					system("pause");
+				}
 				break;
 			}
 			case '4':{
