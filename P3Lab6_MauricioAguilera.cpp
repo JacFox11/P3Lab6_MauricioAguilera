@@ -1,4 +1,6 @@
 #include "admLiga.cpp"
+#include <ctime>
+#include <cstdlib>
 
 admLiga al("./ligas.txt");
 
@@ -71,7 +73,9 @@ int main(){
 				break;
 			}
 			case '4':{
-				
+				srand(time(0));
+				int p=(rand() % 10);
+				srand(time(0));
 				break;
 			}
 			case '5':{
@@ -89,7 +93,24 @@ int main(){
 				break;
 			}
 			case '7':{
-				
+				system("cls");
+				if (al.getN()>0){
+					cout<<"Seleccione una liga"<<endl;
+					for (int i=0; i<al.getN(); i++){
+							cout<<i<<". "<<al.getLigas().at(i)->getNombre()<<endl;
+					}
+					int pos;
+					cout<<"Ingrese una posicion: ";
+					cin>>pos;
+					system("cls");
+					for (int i=0; i<al.getLigas().at(pos)->getEquipos().size(); i++){
+						al.getLigas().at(pos)->getEquipos().at(i)->print();
+					}
+					system("pause");
+				}else{
+					cout<<"No hay ligas presentes para crear la tabla"<<endl;
+					
+				}
 				break;
 			}
 			case '8':{

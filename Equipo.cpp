@@ -1,4 +1,5 @@
 #include "Jugador.cpp"
+#include "Partido.cpp"
 
 #ifndef Equipo_CPP
 #define Equipo_CPP
@@ -8,6 +9,7 @@ class Equipo{
 		string nombre;
 		string fundacion;
 		vector <Jugador*> jugadores;
+		Partido* partido;
 	public:
 		Equipo(){
 		}
@@ -50,7 +52,9 @@ class Equipo{
 		}
 		
 		void print(){
+			cout<<"Equipo"<<setw(10)<<"PJ"<<setw(5)<<"PG"<<setw(5)<<"PE"<<setw(5)<<"PP"<<setw(5)<<"GF"<<setw(5)<<"GC"<<setw(5)<<"DG"<<setw(5)<<"PT"<<endl;
 			cout<<nombre;
+			partido->print();
 		}
 		
 		~Equipo(){}
