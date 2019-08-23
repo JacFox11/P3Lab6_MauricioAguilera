@@ -44,7 +44,7 @@ class Liga{
 		}
 		
 		void remEquipo(int pos){
-			equipos.erase(jugadores.begin() + pos); 
+			equipos.erase(equipos.begin() + pos); 
 		}
 		
 		~Liga(){}
