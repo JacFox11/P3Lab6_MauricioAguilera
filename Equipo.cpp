@@ -1,12 +1,4 @@
-#include <string.h>
-#include <vector>
-#include <bits/stdc++.h>
-#include<iostream> 
-#include<string> 
-#include <fstream>
-#include <stdlib.h>
-
-using namespace std;
+#include "Jugador.cpp"
 
 #ifndef Equipo_CPP
 #define Equipo_CPP
