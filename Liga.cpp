@@ -1,10 +1,4 @@
-#include<string.h>
-#include <vector>
-#include <bits/stdc++.h>
-#include<iostream> 
-#include<string> 
-#include <fstream>
-#include <stdlib.h>
+#include "Equipo.cpp"
 
 using namespace std;
 
@@ -50,7 +44,7 @@ class Liga{
 		}
 		
 		void remEquipo(int pos){
-			equipos.erase(equipos.begin() + pos); 
+			equipos.erase(jugadores.begin() + pos); 
 		}
 		
 		~Liga(){}
