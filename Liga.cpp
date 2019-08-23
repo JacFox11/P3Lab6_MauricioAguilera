@@ -39,12 +39,20 @@ class Liga{
 			return equipos;
 		}
 		
+		void setEquipos(vector <Equipo*> equipos){
+			this->equipos=equipos;
+		}
+		
 		void setEquipo(Equipo* equipo){
 			equipos.push_back(equipo); 
 		}
 		
 		void remEquipo(int pos){
 			equipos.erase(equipos.begin() + pos); 
+		}
+		
+		void print(){
+			cout<<nombre;
 		}
 		
 		~Liga(){}

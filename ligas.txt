@@ -1,0 +1,2 @@
+$LigaMX:Mexico
+CruzAzul:1927{Juan|1|Aregentina}

@@ -37,6 +37,10 @@ class Equipo{
 			return jugadores;
 		}
 		
+		void setJugadores(vector <Jugador*> jugadores){
+			this->jugadores=jugadores;
+		}
+		
 		void setJugador(Jugador* jugador){
 			jugadores.push_back(jugador); 
 		}

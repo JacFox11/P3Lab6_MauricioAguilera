@@ -76,43 +76,49 @@ class admLiga{
         }
             
         void leer(){
-                 fstream Leer;
-                 string linea;
-                 ligas.clear();                 
-                 Leer.open(ruta.c_str()); 
-                 if (Leer.is_open()){                 
-                     while(! Leer.eof()){
-                             getline(Leer,linea);
-                             vector <string> acts;
-                             string act=token(linea, ";",3);
-                             int c1=1;
-                             int c2=1;
-							 while (act.size() >= c2){
-							 	c1++;
-							 	acts.push_back(token(act, ",", c1));
-								c2+=token(linea,"/", c1).size()+3;
+                fstream Leer;
+                string linea;
+                ligas.clear();         
+                Leer.open(ruta.c_str()); 
+                if (Leer.is_open()){
+					getline(Leer,linea);
+                    vector <Equipo*> equipos;
+                    linea=token(linea, "$",1);
+                    int c=0;
+                    int c3=0;
+					               
+                    while(! Leer.eof()){
+                        string nombre=token(linea, ":", 1);
+                        string pais=token(linea,":", 2);
+                        equipos.clear();
+                        getline(Leer, linea);
+                        char a=linea[0];
+                        while (a!='$'){
+                        	equipos.push_back(new Equipo(token(linea,":", 1), token(token(linea, "{", 1), ":", 2)));
+                        	string jugador=token(token(linea,"{", 2), "}", 1);
+                        	int c1=1;
+                            int c2=1;
+                        	while (jugador.size() >= c2){
+							 	equipos.at(c)->setJugador(new Jugador(token(token(jugador, ";", c1), "|", 1), atoi(token(token(jugador, ";", c1), "|", 2).c_str()), token(token(jugador, ";", c1), "|", 3)));
+								c2+=token(linea,";", c1).size()+2;
 								c1++; 
-							 } 
-                             if(linea.size()>0){  
-                                addLiga(new Liga(atoi(token(linea,";", 1).c_str()),
-                                                  token(linea,";", 2),
-                                                  atoi(token(linea,";", 4).c_str())
-                                                  )
-                                );
-								ligas.at(ligas.size() -1)->setActividades(acts); 
-                            }
-                      }
-                  }     
+							}
+							c++;
+							getline(Leer, linea);
+							if (Leer.eof()){
+								a='$';
+							}
+						}
+						addLiga(new Liga(nombre, pais));
+						ligas.at(c3)->setEquipos(equipos);
+						c3++;
+                    }
+                }     
                  Leer.close();
             }
                          
-             void print(){
-                  cout<<"ligas:"<<endl;
-                
-                for(int i=0; i<ligas.size();i++){
-				        cout<<"\t"<<"-";				    	
-						ligas.at(i)->print();				    
-				  }
+            void print(){
+                cout<<"ligas:"<<endl;
             }             
 };
 #endif
