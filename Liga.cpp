@@ -35,7 +35,7 @@ class Liga{
 			this->pais=pais;
 		}
 		
-		vector <Equipo*> getEquipo(){
+		vector <Equipo*> getEquipos(){
 			return equipos;
 		}
 		

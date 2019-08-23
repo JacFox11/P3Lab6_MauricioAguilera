@@ -33,7 +33,7 @@ class Equipo{
 			this->fundacion=fundacion;
 		}
 		
-		vector <Jugador*> getJugador(){
+		vector <Jugador*> getJugadores(){
 			return jugadores;
 		}
 		
