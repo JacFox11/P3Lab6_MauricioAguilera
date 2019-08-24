@@ -35,6 +35,14 @@ class Equipo{
 			this->fundacion=fundacion;
 		}
 		
+		Partido* getPartido(){
+			return partido;
+		}
+		
+		void setPartido( Partido* partido){
+			this->partido=partido;
+		}
+		
 		vector <Jugador*> getJugadores(){
 			return jugadores;
 		}

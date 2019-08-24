@@ -23,24 +23,21 @@ class Partido{
 		int pt;
 	public:
 		Partido(){
-		}
-		
-		Partido(int pj, int pg, int pe, int pp, int gf, int gc, int dg, int pt){
-			this->pj=pj;
-			this->pg=pg;
-			this->pe=pe;
-			this->pp=pp;
-			this->gf=gf;
-			this->gc=gc;
-			this->dg=dg;
-			this->pt=pt;
+			this->pj=0;
+			this->pg=0;
+			this->pe=0;
+			this->pp=0;
+			this->gf=0;
+			this->gc=0;
+			this->dg=0;
+			this->pt=0;
 		}
 		
 		int getPj(){
 			return pj;
 		}
 		
-		void setPj(){
+		void setPj(int pj){
 			this->pj=pj;
 		}
 		
@@ -48,15 +45,15 @@ class Partido{
 			return pg;
 		}
 		
-		void setPg(){
+		void setPg(int pg){
 			this->pg=pg;
 		}
 		
-		int eetPe(){
+		int getPe(){
 			return pe;
 		}
 		
-		void setPe(){
+		void setPe(int pe){
 			this->pe=pe;
 		}
 		
@@ -64,7 +61,7 @@ class Partido{
 			return pp;
 		}
 		
-		void setPp(){
+		void setPp(int pp){
 			this->pp=pp;
 		}
 		
@@ -72,7 +69,7 @@ class Partido{
 			return gf;
 		}
 		
-		void setGf(){
+		void setGf(int gf){
 			this->gf=gf;
 		}
 		
@@ -80,7 +77,7 @@ class Partido{
 			return gc;
 		}
 		
-		void setGc(){
+		void setGc(int gc){
 			this->gc=gc;
 		}
 		
@@ -88,7 +85,7 @@ class Partido{
 			return dg;
 		}
 		
-		void setDg(){
+		void setDg(int dg){
 			this->dg=dg;
 		}
 		
@@ -96,7 +93,7 @@ class Partido{
 			return pt;
 		}
 		
-		void setPt(){
+		void setPt(int pt){
 			this->pt=pt;
 		}
 		

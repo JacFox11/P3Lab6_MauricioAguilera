@@ -60,7 +60,7 @@ int main(){
 						}
 						int pos2;
 						cout<<"Ingrese una posicion: ";
-						cin>>pos;
+						cin>>pos2;
 						Adminjugador(pos, pos2);
 					}else{
 						cout<<"No se puede crear jugadores sin equipos existentes en esta liga"<<endl;
@@ -73,9 +73,90 @@ int main(){
 				break;
 			}
 			case '4':{
-				srand(time(0));
-				int p=(rand() % 10);
-				srand(time(0));
+				system("cls");
+				int pos, pos2;
+				if (al.getN()>0){
+					for (int i=0; i<al.getN(); i++){
+						cout<<i<<". "<<al.getLigas().at(i)->getNombre()<<endl;
+					}
+					cout<<"Ingrese una posicion: ";
+					cin>>pos;
+					if (al.getLigas().at(pos)->getEquipos().size()>0){
+						system("cls");
+						for (int i=0; i<al.getLigas().at(pos)->getEquipos().size(); i++){
+							cout<<i<<". "<<al.getLigas().at(pos)->getEquipos().at(i)->getNombre()<<endl;
+						}
+						cout<<"Seleccione el primer equipo: ";
+						cin>>pos2;
+					}else{
+						cout<<"No se puede hacer una partida sin equipos"<<endl;
+						system("pause");
+					}
+				}else{
+					cout<<"No se pueden elegir equipos sin ligas existentes"<<endl;
+					system("pause");
+				}
+				system("cls");
+				if (al.getN()>0){
+					for (int i=0; i<al.getN(); i++){
+						cout<<i<<". "<<al.getLigas().at(i)->getNombre()<<endl;
+					}
+					int pos3;
+					cout<<"Ingrese una posicion: ";
+					cin>>pos3;
+					if (al.getLigas().at(pos3)->getEquipos().size()>0){
+						system("cls");
+						for (int i=0; i<al.getLigas().at(pos3)->getEquipos().size(); i++){
+							cout<<i<<". "<<al.getLigas().at(pos3)->getEquipos().at(i)->getNombre()<<endl;
+						}
+						int pos4;
+						cout<<"Ingrese una posicion: ";
+						cin>>pos4;
+						al.getLigas().at(pos)->getEquipos().at(pos2)->setPartido(new Partido());
+						al.getLigas().at(pos3)->getEquipos().at(pos4)->setPartido(new Partido());
+						al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->setPj(al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->getPj()+1);
+						al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->setPj(al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->getPj()+1);
+						srand(time(0));
+						int temp=(rand() % 10);
+						srand(time(0));
+						int temp2=(rand() % 10);
+						srand(time(0));
+						if (temp>temp2){
+							al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->setPg(al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->getPg()+1);
+							al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->setPt(al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->getPt()+3);
+							al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->setPp(al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->getPp()+1);
+						}else{
+							if (temp<temp2){
+								al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->setPg(al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->getPg()+1);
+								al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->setPt(al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->getPt()+3);
+								al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->setPp(al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->getPp()+1);
+							}else{
+								al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->setPe(al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->getPe()+1);
+								al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->setPt(al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->getPt()+1);
+								al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->setPe(al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->getPe()+1);
+								al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->setPt(al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->getPt()+1);
+							}
+						}
+						al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->setGf(al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->getGf()+temp);
+						al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->setGf(al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->getGf()+temp2);
+						
+						al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->setGc(al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->getGc()+temp);
+						al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->setGc(al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->getGc()+temp2);
+						
+						al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->setDg(al.getLigas().at(pos)->getEquipos().at(pos2)->getPartido()->getDg()+(temp-temp2));
+						al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->setDg(al.getLigas().at(pos3)->getEquipos().at(pos4)->getPartido()->getDg()+(temp2-temp));
+						system("cls");
+						cout<<"El partido ha finalizado, puede ver los resultados en la tabla"<<endl;
+						system("pause");
+					}else{
+						cout<<"No se puede hacer una partida sin equipos"<<endl;
+						system("pause");
+					}
+				}else{
+					cout<<"No se pueden elegir equipos sin ligas existentes"<<endl;
+					system("pause");
+				}
+				
 				break;
 			}
 			case '5':{
